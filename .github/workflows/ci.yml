@@ -1,0 +1,33 @@
+name: CI Checks
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3' # Ensure this matches your project's requirement
+        extensions: mbstring, pdo_mysql, dom, fileinfo # Add any other extensions your project needs
+        tools: composer:v2, php-cs-fixer, phpstan
+
+    - name: Install Dependencies
+      run: composer install --prefer-dist --no-progress --no-interaction
+
+    - name: Run PHPUnit Tests
+      run: vendor/bin/phpunit
+
+    - name: Run PHP-CS-Fixer
+      run: vendor/bin/php-cs-fixer --config=.php-cs-fixer.dist.php --diff --dry-run --stop-on-violation
+
+    - name: Run PHPStan
+      run: vendor/bin/phpstan analyse --configuration=phpstan.neon --memory-limit=1G --level=8
