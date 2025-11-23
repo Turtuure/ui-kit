@@ -99,7 +99,7 @@ final class OverlaysTest extends TestCase
         $this->assertStringContainsString('data-bs-title="Popover Title"', $html);
         $this->assertStringContainsString('data-bs-content="And here&#039;s some amazing content. It&#039;s very engaging. Right?"', $html);
         $this->assertStringContainsString('Click me', $html);
-        $this->assertStringContainsString('<button', $html); // Default tag
+        $this->assertStringContainsString('<span', $html); // Default tag is now span
     }
 
     public function testPopoverPlacementAndTag(): void

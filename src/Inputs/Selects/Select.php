@@ -119,8 +119,8 @@ class Select extends Component
 
         // Render standard options
         foreach ($this->options as $option) {
-            $selected = $option['selected'] ? ' selected' : '';
-            $disabled = $option['disabled'] ? ' disabled' : '';
+            $selected = ($option['selected'] ?? false) ? ' selected' : '';
+            $disabled = ($option['disabled'] ?? false) ? ' disabled' : '';
             $optionsHtml .= sprintf(
                 '<option value="%s"%s%s>%s</option>',
                 htmlspecialchars($option['value'], ENT_QUOTES, 'UTF-8'),
@@ -134,8 +134,8 @@ class Select extends Component
         foreach ($this->optgroups as $optgroup) {
             $groupOptionsHtml = '';
             foreach ($optgroup['options'] as $option) {
-                $selected = $option['selected'] ? ' selected' : '';
-                $disabled = $option['disabled'] ? ' disabled' : '';
+                $selected = ($option['selected'] ?? false) ? ' selected' : '';
+                $disabled = ($option['disabled'] ?? false) ? ' disabled' : '';
                 $groupOptionsHtml .= sprintf(
                     '<option value="%s"%s%s>%s</option>',
                     htmlspecialchars($option['value'], ENT_QUOTES, 'UTF-8'),

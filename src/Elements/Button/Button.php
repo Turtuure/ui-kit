@@ -135,8 +135,8 @@ class Button extends Component
             unset($this->attributes['type']);
         }
 
-        $attributes = $this->buildAttributes();
-
+        // Ensure class attribute is first, then others in expected order
+        $attributes = $this->buildAttributes(['class', 'type', 'href']);
         return sprintf('<%1$s%2$s>%3$s</%1$s>', $this->tag, $attributes, htmlspecialchars($this->label, ENT_QUOTES, 'UTF-8'));
     }
 }

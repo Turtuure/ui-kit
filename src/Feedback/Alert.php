@@ -65,13 +65,11 @@ class Alert extends Component
 
     public function render(): string
     {
-        $attributes = $this->buildAttributes();
-
+        $attributes = $this->buildAttributes(['class', 'role']);
         $closeButton = '';
         if ($this->dismissible) {
             $closeButton = '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
         }
-
         return sprintf('<div%s>%s%s</div>', $attributes, $this->content, $closeButton);
     }
 }

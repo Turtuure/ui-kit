@@ -58,7 +58,11 @@ class Popover extends Component
 
     public function render(): string
     {
-        $attributes = $this->buildAttributes();
-        return sprintf('<%s%s>%s</%s>', $this->tag, $attributes, $this->content, $this->tag);
+        $tag = 'span';
+        if (isset($this->attributes['href'])) {
+            $tag = 'a';
+        }
+        $attributes = $this->buildAttributes(['class', 'href']);
+        return sprintf('<%s%s>%s</%s>', $tag, $attributes, $this->content, $tag);
     }
 }

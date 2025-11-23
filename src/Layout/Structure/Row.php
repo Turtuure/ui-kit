@@ -52,7 +52,7 @@ class Row extends Component
 
     public function render(): string
     {
-        $attributes = $this->buildAttributes();
+        $attributes = $this->buildAttributes(['class']);
         return sprintf('<div%s>%s</div>', $attributes, $this->content);
     }
 }
