@@ -1,0 +1,119 @@
+/* C:\Projects\archon\ui-kit\resources\css\archon-ui.css */
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900; /* Variable font weight range */
+    font-display: swap;
+    src: url('../fonts/Inter-roman-wght.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    /* --- Colors --- */
+    --archon-primary: #007bff; /* Equivalent to Bootstrap's blue, but explicit */
+    --archon-secondary: #6c757d;
+    --archon-success: #28a745;
+    --archon-danger: #dc3545;
+    --archon-warning: #ffc107;
+    --archon-info: #17a2b8;
+    --archon-light: #f8f9fa;
+    --archon-dark: #343a40;
+
+    /* Neutral Palette */
+    --archon-gray-100: #f8f9fa;
+    --archon-gray-200: #e9ecef;
+    --archon-gray-300: #dee2e6;
+    --archon-gray-400: #ced4da;
+    --archon-gray-500: #adb5bd;
+    --archon-gray-600: #6c757d;
+    --archon-gray-700: #495057;
+    --archon-gray-800: #343a40;
+    --archon-gray-900: #212529;
+
+    /* Text Colors */
+    --archon-text-base: var(--archon-gray-900);
+    --archon-text-muted: var(--archon-gray-600);
+    --archon-text-light: var(--archon-light);
+
+    /* Background Colors */
+    --archon-bg-surface: #ffffff;
+    --archon-bg-body: var(--archon-gray-100);
+    --archon-bg-hover: var(--archon-gray-200);
+
+    /* --- Spacing (based on 0.25rem scale for Bootstrap compatibility) --- */
+    --archon-space-0: 0;
+    --archon-space-1: 0.25rem; /* 4px */
+    --archon-space-2: 0.5rem;  /* 8px */
+    --archon-space-3: 1rem;    /* 16px */
+    --archon-space-4: 1.5rem;  /* 24px */
+    --archon-space-5: 3rem;    /* 48px */
+    --archon-space-6: 4rem;    /* 64px */
+    --archon-space-7: 5rem;    /* 80px */
+    --archon-space-8: 6rem;    /* 96px */
+
+    /* --- Typography --- */
+    --archon-font-family-base: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --archon-font-size-base: 1rem;
+    --archon-line-height-base: 1.5;
+
+    /* Headings */
+    --archon-h1-font-size: 2.5rem;
+    --archon-h2-font-size: 2rem;
+    --archon-h3-font-size: 1.75rem;
+    --archon-h4-font-size: 1.5rem;
+    --archon-h5-font-size: 1.25rem;
+    --archon-h6-font-size: 1rem;
+
+    /* --- Borders & Radius --- */
+    --archon-border-color: var(--archon-gray-300);
+    --archon-border-radius: 0.375rem; /* Matches Bootstrap default */
+    --archon-border-radius-sm: 0.25rem;
+    --archon-border-radius-lg: 0.5rem;
+
+    /* --- Shadows --- */
+    --archon-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --archon-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    --archon-shadow-lg: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+/* Apply base font-family and colors */
+body {
+    font-family: var(--archon-font-family-base);
+    color: var(--archon-text-base);
+    background-color: var(--archon-bg-body) !important; /* Override Bootstrap body bg */
+}
+
+/* General overrides to link Bootstrap to our design tokens */
+.btn-primary {
+    --bs-btn-bg: var(--archon-primary);
+    --bs-btn-border-color: var(--archon-primary);
+    --bs-btn-hover-bg: #0056b3; /* Darker primary */
+    --bs-btn-hover-border-color: #0056b3;
+}
+
+/* Add more overrides here as components are built */
+.hero-card {
+    box-shadow: var(--archon-shadow);
+    border-radius: var(--archon-border-radius-lg);
+}
+
+.text-primary {
+    color: var(--archon-primary) !important;
+}
+
+/* --- Showcase Code Snippets --- */
+pre.code-snippet {
+    background-color: var(--archon-gray-900); /* Dark background */
+    color: #e9ecef; /* Light gray text */
+    padding: 1rem;
+    border-radius: var(--archon-border-radius);
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+pre.code-snippet code {
+    color: inherit; /* Ensure code inherits light color */
+}

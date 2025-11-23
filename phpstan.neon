@@ -1,0 +1,9 @@
+parameters:
+    level: 8 # The strictest level
+    paths:
+        - src/
+    excludePaths:
+        - src/vendor/* # Exclude vendor files if any sneak in (though they shouldn't)
+    ignoreErrors:
+        # Example of how to ignore specific errors if absolutely necessary
+        # - '#Call to an undefined method SomeClass::someMethod().#'

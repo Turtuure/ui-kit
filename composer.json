@@ -1,0 +1,29 @@
+{
+    "name": "archon/ui-kit",
+    "description": "Enterprise UI Kit for Archon Projects",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Archon\\UIKit\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "symfony/var-dumper": "^6.0"
+    },
+    "authors": [
+        {
+            "name": "Archon Dev",
+            "email": "dev@archon.local"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "process-timeout": 0
+    }
+}
