@@ -129,9 +129,8 @@ class Textarea extends Component
 
     public function render(): string
     {
-        $attributes = $this->buildAttributes();
-
-        // The value goes between the <textarea> tags
+        // Order: name, rows, class, then others
+        $attributes = $this->buildAttributes(['name', 'rows', 'class', 'placeholder', 'disabled', 'readonly']);
         return sprintf('<textarea%s>%s</textarea>', $attributes, htmlspecialchars($this->value, ENT_QUOTES, 'UTF-8'));
     }
 }

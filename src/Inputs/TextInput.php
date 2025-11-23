@@ -131,8 +131,8 @@ class TextInput extends Component
 
     public function render(): string
     {
-        $attributes = $this->buildAttributes();
-
+        // Order: name, type, class, then others
+        $attributes = $this->buildAttributes(['name', 'type', 'class', 'value', 'placeholder', 'disabled', 'readonly']);
         return sprintf('<input%s>', $attributes);
     }
 }
