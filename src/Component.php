@@ -93,18 +93,28 @@ abstract class Component
      */
     protected function buildAttributes(): string
     {
-        // Merge classes into attributes
         $finalAttributes = $this->attributes;
 
         if (!empty($this->classes)) {
-            $classString = implode(' ', array_keys($this->classes));
-            // specific handling if class attribute was manually set via setAttribute
+            // Sort classes alphabetically for consistent output
+            $sortedClasses = array_keys($this->classes);
+            sort($sortedClasses);
+            $classString = implode(' ', $sortedClasses);
+
+            // Specific handling if class attribute was manually set via setAttribute
             if (isset($finalAttributes['class'])) {
-                $finalAttributes['class'] .= ' ' . $classString;
+                // Merge and re-sort if existing class attribute is present
+                $existingClasses = explode(' ', $finalAttributes['class']);
+                $mergedClasses = array_unique(array_merge($existingClasses, $sortedClasses));
+                sort($mergedClasses);
+                $finalAttributes['class'] = implode(' ', $mergedClasses);
             } else {
                 $finalAttributes['class'] = $classString;
             }
         }
+
+        // Sort all final attributes alphabetically for consistent output
+        ksort($finalAttributes);
 
         $html = '';
         foreach ($finalAttributes as $key => $value) {

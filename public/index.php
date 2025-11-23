@@ -26,6 +26,10 @@ $allowedPages = [
     'layout',
     'alerts',
     'typography',
+    'navigation',
+    'overlays',
+    'data-display',
+    'elements',
     // Add new component pages here as they are created
 ];
 
@@ -137,6 +141,26 @@ if (!in_array($page, $allowedPages, true) || !file_exists($showcasePath)) {
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($page === 'typography') ? 'active' : ''; ?>" href="/?page=typography">
                         <i class="bi bi-fonts me-2"></i> Typography
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo ($page === 'navigation') ? 'active' : ''; ?>" href="/?page=navigation">
+                        <i class="bi bi-compass me-2"></i> Navigation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo ($page === 'overlays') ? 'active' : ''; ?>" href="/?page=overlays">
+                        <i class="bi bi-window-stack me-2"></i> Overlays
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo ($page === 'data-display') ? 'active' : ''; ?>" href="/?page=data-display">
+                        <i class="bi bi-table me-2"></i> Data Display
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo ($page === 'elements') ? 'active' : ''; ?>" href="/?page=elements">
+                        <i class="bi bi-puzzle me-2"></i> Elements
                     </a>
                 </li>
                 <!-- New components will be added here -->
