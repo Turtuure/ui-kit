@@ -16,7 +16,7 @@ class Popover extends Component
     private string $title;
     private string $message;
     private string $placement = 'right'; // top, bottom, left, right, auto
-    private string $tag = 'button'; // Often a button or anchor
+    private string $tag = 'span'; // Default to span to avoid nested buttons
 
     /**
      * @param string $content The text or HTML that triggers the popover.
@@ -33,6 +33,7 @@ class Popover extends Component
         $this->data('bs-toggle', 'popover');
         $this->data('bs-title', $title);
         $this->data('bs-content', $message);
+        $this->data('bs-container', 'body'); // Prevent clipping
         $this->placement($this->placement);
     }
 

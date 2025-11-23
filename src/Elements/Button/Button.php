@@ -16,12 +16,22 @@ class Button extends Component
     private string $variant = 'primary';
     private bool $outline = false;
     private string $size = ''; // lg, sm, or empty
+    private string $tag = 'button';
 
     public function __construct(string $label)
     {
         $this->label = $label;
         $this->addClass('btn'); // Always add the base btn class
         $this->variant($this->variant); // Apply default variant
+    }
+
+    /**
+     * Set the HTML tag (e.g., 'a', 'button').
+     */
+    public function tag(string $tag): static
+    {
+        $this->tag = $tag;
+        return $this;
     }
 
     /**
@@ -102,10 +112,31 @@ class Button extends Component
         return $this;
     }
 
+    /**
+     * Set the text color (e.g., white, primary, success).
+     * Useful with dark backgrounds or specific contrast needs.
+     */
+    public function textColor(string $color): static
+    {
+        // Remove previous text color classes
+        foreach (['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white', 'muted'] as $c) {
+            $this->removeClass("text-{$c}");
+        }
+        $this->addClass("text-{$color}");
+        return $this;
+    }
+
     public function render(): string
     {
+        // Automatically switch to <a> if href is present and tag wasn't manually changed from button
+        if (isset($this->attributes['href']) && $this->tag === 'button') {
+            $this->tag = 'a';
+            // Remove 'type' attribute for anchors as it's invalid/unnecessary
+            unset($this->attributes['type']);
+        }
+
         $attributes = $this->buildAttributes();
 
-        return sprintf('<button%s>%s</button>', $attributes, htmlspecialchars($this->label, ENT_QUOTES, 'UTF-8'));
+        return sprintf('<%1$s%2$s>%3$s</%1$s>', $this->tag, $attributes, htmlspecialchars($this->label, ENT_QUOTES, 'UTF-8'));
     }
 }
